@@ -11,8 +11,8 @@
 
 # 실행시 run으로
 
-# f = open("C:\\python\file2.txt", 'w')
-# f.close()
+f = open("C:/python/file3.txt", 'w')
+f.close()
 
 data='안녕하세요'
 f = open("file2.txt", 'w', encoding='utf-8')
@@ -26,3 +26,8 @@ for i in range(1,11):
     data
 
 
+list1=[1,2,3]
+
+a=tuple(list1)
+
+print(a)
