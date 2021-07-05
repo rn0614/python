@@ -263,7 +263,7 @@ class Calculator:		#calculator 객체 생성
         self.result += num
         return self.result
 
-cal1 = Calculator()
+cal1 = Calculator() # cal1 객체 생성하기  cal1은 Calculator의 객체
 cal2 = Calculator()
 
 print(cal1.add(3))
@@ -271,4 +271,200 @@ print(cal1.add(4))
 print(cal2.add(3))
 print(cal2.add(7))
 ```
+
+
+
+
+
+##  객체와 인스턴스
+
+클래스로 만든 객체를 인스턴스라고도 한다. 
+
+a = Cookie() 이렇게 만든 a는 객체이다. 그리고 a 객체는 Cookie의 인스턴스이다. 
+
+즉 인스턴스라는 말은 특정 객체(a)가 어떤 클래스(Cookie)의 객체인지를 관계 위주로 설명할 때 사용한다. 
+
+
+
+## 메서드 사용
+
+``` python
+a=Class()
+Class.method(self, int a, int b)
+
+a.method(int a, int b)
+```
+
+위형태로 클래스를 쓸 때는 self 사용 가능, 밑의 방식에서는 self는 반드시 생략
+
+
+
+## `__init__`
+
+`__init__` 이 있을 때는 초기값을 설정해줘야 class 가 생성됨
+
+```python
+a=FourCal(4,3)
+```
+
+
+
+## 상속
+
+``` python
+class MoreFourCal(FourCal): # 자식 클래스(부모클래스)
+    def method2():
+        pass
+```
+
+
+
+## 모듈
+
+.py 파일 단위로 함수, 변수, 클래스의 모음이다.
+
+`import 모듈명` 혹은 `from 모듈명 import 함수명 ` 으로 사용가능
+
+앞의 모듈을 가져온 경우 모듈명.함수명으로 씀.
+
+뒤의 함수를 가져온 경우 함수명으로 바로 사용 가능.
+
+모듈 실행을 위해서는 같은 폴더에 존재해야함.
+
+
+
+## `__name__`
+
+`C:\doit>python mod1.py`처럼 
+
+직접 mod1.py 파일을 실행할 경우 mod1.py의 `__name__` 변수에는 `__main__` 값이 저장된다. 
+
+하지만 파이썬 셸이나 다른 파이썬 모듈에서 mod1을 import 할 경우에는 mod1.py의 `__name__` 변수에는 mod1.py의 모듈 이름 값 mod1이 저장된다.
+
+| 직접 실행  | import |
+| ---------- | ------ |
+| `__main__` | 모듈명 |
+
+
+
+
+
+## 패키지
+
+``` python
+game/				#  game 패키지 안에
+    __init__.py
+    sound/			# sound 패키지 안에
+        __init__.py
+        echo.py		## echo.py
+        wav.py
+    graphic/
+        __init__.py
+        screen.py
+        render.py
+    play/
+        __init__.py
+        run.py
+        test.py
+```
+
+
+
+* `__init__.py` 파일은 해당 디렉터리가 패키지의 일부임을 알려주는 역할을 한다. 만약 game, sound, graphic 등 패키지에 포함된 디렉터리에 `__init__.py` 파일이 없다면 패키지로 인식되지 않는다.
+
+  > ※ python3.3 버전부터는 `__init__.py` 파일이 없어도 패키지로 인식한다([PEP 420](https://www.python.org/dev/peps/pep-0420/)). 하지만 하위 버전 호환을 위해 `__init__.py` 파일을 생성하는 것이 안전한 방법이다.
+
+
+
+
+
+## try-except
+
+``` python
+try:
+    age=int(input('나이를 입력하세요: '))
+except:
+    print('입력이 정확하지 않습니다.')
+else:
+    if age <= 18:
+        print('미성년자는 출입금지입니다.')
+    else:
+        print('환영합니다.')
+```
+
+
+
+## enumerate
+
+``` python
+for i, name in enumerate(['body', 'foo', 'bar']):
+	print(i, name)
+
+# 결과 index와 값을 동시에 출력
+0 body
+1 foo
+2 bar
+```
+
+
+
+## eval
+
+문자열을 실행한 결과를 반환해주는 함수
+
+``` python
+eval('divmod(4, 3)')
+# 결과 (1,)1
+```
+
+
+
+
+
+## filter
+
+``` python
+list(filter(lambda x: x > 0, [1, -3, 2, 0, -5, 6]))
+# 결과 [1,2,6]
+```
+
+
+
+## instance
+
+``` python
+a=Person()
+isinstance(a, Person)
+# 결과 True
+```
+
+
+
+## map
+
+``` python
+def two_times(x): 
+    return x*2
+
+list(map(two_times, [1, 2, 3, 4]))
+#결과 2,4,6,8
+
+```
+
+
+
+## 라이브러리
+
+- [sys](https://wikidocs.net/33#sys)
+- [pickle](https://wikidocs.net/33#pickle)
+- [os](https://wikidocs.net/33#os)
+- [shutil](https://wikidocs.net/33#shutil)
+- [glob](https://wikidocs.net/33#glob)
+- [tempfile](https://wikidocs.net/33#tempfile)
+- [time](https://wikidocs.net/33#time)
+- [calendar](https://wikidocs.net/33#calendar)
+- [random](https://wikidocs.net/33#random)
+- [webbrowser](https://wikidocs.net/33#webbrowser)
+
+
 
