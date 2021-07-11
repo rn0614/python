@@ -1,4 +1,4 @@
-## 기본 변수
+## print()
 
 출력하는 법 : print( 내용, sep="사잇값", end="끝값")
 
@@ -7,19 +7,45 @@
 - +의 경우 sep="" , (,)의 경우 sep=" "을 default 값으로 가짐.
 - +의 경우 다른 자료형 사용 불가, (,)은 다른 자료형도 사용 가능
 
-
-
 print('a', 1, sep=':', end='.')
 
-`len(배열)`, `min(배열)`, `max(배열)`, `pow(값, 제곱수)`, `input(str)`, `round(float)`, `list(zip(배열1,배열2))`
+
+
+## python 내장함수
+
+`len(배열)`, `min(배열)`, `max(배열)`, `pow(값, 제곱수)`, `input(출력문)`, `round(float,소수점 아래 자릿수)`, `list(zip(배열1,배열2))`
+
+
+
+## 배열-> 문자열, 문자열-> 배열
+
+`"".join(배열)` : 배열을 문자열로 변환
+
+`문자열.spilt("기준") `: 문자열을 split 안에 있는 것으로 등분
 
 
 
 ## 문자열 함수
 
-"".join(배열) : 배열을 문자열로 변환
+문자열.strip() : 양쪽 공백 제거
 
-문자열.spilt("") : 문자열을 split 안에 있는 것으로 등분
+문자열.replace( "원래 문자","바꿀 문자") : 문자열에서 원래 문자를 바꿀 문자로 모두 변경
+
+문자열.startswith('문자열1') : 문자열이 문자열1로 시작하는지 확인
+
+문자열.endswith('문자열2') : 문자열이 문자열2로 끝나는지 확인 
+
+문자열.count('문자') : 문자열에서 문자의 숫자 구하기
+
+문자열.index('문자', 시작위치) : 문자열에서 문자 위치 찾기
+
+문자열.find('문자', 시작위치) :문자열에서 문자 찾기
+
+문자열.capitalize() : 첫문자 대문자
+
+문자열.lower() : 소문자로 바꾸기
+
+문자열.upper() : 대문자로 바꾸기
 
 
 
@@ -37,15 +63,35 @@ print("내용", end=" " ) 내용 끝나고 끝에 end 에 있는 것을 붙임.
 print(f"{a}번째로 들어온것은 {b}입니다.{1000:,.1f}원을 얻었습니다,")
 ```
 
+``` python
+a=1
+print(f"3자리를 유지하고 앞에 0을 채우려면 {a:03d}를 쓰면 된다.")
+```
+
 
 
 변수형태 확인 : type()
 
-상수 변환값 : int(), str(), float() 셋이 서로 변환 가능
+상수 변환값 : int(), str(), float() 서로 변환 가능
 
 배열 변환값 : str(), list(), tuple(), set()
 
 -  str은 배열로도 숫자로도 형변환 할 수 있다는 것을 알아두자.
+
+
+
+
+
+## sort
+
+ `sorted_list=sorted(a,key=lambda x: (x[1],x[2],x[0]), reverse=True)`
+
+key에 다음과 같이 함수 삽입 가능 이럴경우 x[1]을 우선으로 정렬 , `key=len`의 경우 길이를 대상으로 정렬 
+
+리스트.sort(reverse=True) : 요소 정렬 reverse=True면 내림차순
+
+- 리스트.sort() 시 본체 정렬
+- sorted(리스트) 시 새로운 정렬 리스트 반환 / 본래 리스트는 유지
 
 
 
@@ -58,6 +104,8 @@ input("출력 메세지 : ")  입력한 값을 str 형태로 받음.
 숫자를 입력받고 싶으면 다음과 같이 사용
 
 `int(input("숫자를 입력하세요 :"))`
+
+
 
 
 
@@ -99,11 +147,6 @@ len(리스트) :  리스트 길이 출력 / 보통 for 문에서 반복 횟수�
 
 리스트.extend(리스트) : 리스트에 리스트 추가 내부 리스트가 아닌 일반 합쳐진 리스트로 들어감
 
-리스트.sort(reverse=True) : 요소 정렬 reverse=True면 내림차순
-
-- 리스트.sort() 시 본체 정렬
-- sorted(리스트) 시 새로운 정렬 리스트 반환 / 본래 리스트는 유지
-
 리스트.index(요소) : 해당 요소의 인덱스 값 반환  / 찾을 문자가 없으면 에러 / 문자열,리스트, 튜플
 
 문자열.find(요소) : 해당 요소의 인덱스 값 반환  / 찾을 문자가 없으면 -1 / 문자열만 사용
@@ -116,11 +159,73 @@ sum(리스트) : 리스트 요소들의 합
 
 
 
+- 만약 list1 형태가 [(1,2,3), ("a","b","c")] 형태라면 `for x,y,z in list1` 형태로 사용가능.
+
+
+
+import collections
+
+collections.Counter(리스트) : 리스트 내부 요소들의 갯수 세기
+
+
+
 [ 표현식 for 항목 in 리스트 or 튜플 if 조건문 ]
 
  [y for x, y in zip([1,2,3], [3,2,1])]
 
 
+
+
+
+## 집합
+
+set1.remove()
+
+set1.pop()
+
+set1&set2 : 교집합(intersection)
+
+set1|set2 : 합집합(union)
+
+set1-set2 : 차집합(difference)
+
+set1^set2 : 합집합-교집합 (symmetric_difference)
+
+
+
+
+
+## 딕셔너리
+
+dict1["key1"] : value1 출력
+
+dict1["key1"]=value1 : {key1, value1} 쌍 대입, 수정
+
+list(dict1.keys()) : 키값을 리스트로 출력 ( =list(dict)와 동일값)
+
+list(dict1.values()) : 값을 리스트로 출력
+
+list(dict1.items()) :  [(key1,value1), (key2,value2)] 형태로 반환
+
+[(key1,value1), (key2,value2)]의 형태에서 dict 사용시 쉽게 dict 형태로 변환
+
+list1=[key1,key2], list2=[value1,value2] 의 형태에서는 dict(zip(list1,list2)) 형태를 쓸 것
+
+
+
+## break, continue
+
+break : 반복문 자체를 빠져나옴.
+
+continue : 이번회차 반복을 중단함.
+
+
+
+## list comprehension
+
+[표현식 for 변수 in 리스트  객체 if 조건식]
+
+`[ i*2 for i in list1 if i%2==0]`
 
 
 
@@ -256,6 +361,30 @@ add=lambda a,b : a+b
 
 
 
+## OS 모듈
+
+`os.listdir()` : 파일 내부에 있는 파일을 모두 불러옴.
+
+`os.getcwd()` : 현재 경로 출력
+
+`os.mkdir()` : 경로에 폴더 생성
+
+`os.path.join('-','test') ` : 현재 os의 파일 구분자로 연결
+
+`os.path.abspath('파일명')` :지정된 파일의 절대 경로 반환
+
+`os.path.isfile()` : 파일이 있는지 확인
+
+`os.path.isdir()` : 폴더가 있는지 확인
+
+`os.path.split()` : 폴더를 디렉토리명과 파일명으로 나눔
+
+`os.path.splitext()` : 파일명과 확장자를 나눔
+
+ 
+
+
+
 ## 파일 생성
 
 ``` python
@@ -276,6 +405,14 @@ while True:
     if not line: break		# 빈 라인을 만나면 break
     print(line)	
 f.close()
+```
+
+
+
+``` python
+with open('07-07\\hello.txt','r') as pr: #해당폴더에서 07-07 폴더 열고 거기서 hello.txt 파일 열기
+    for line in pr:
+        print(line)
 ```
 
 
@@ -305,7 +442,7 @@ f.close()
 with open("foo.txt", "w") as f:
     f.write("Life is too short, you need python")
 
-# with문은 open과 close를 같이 처리.
+# with문은 open과 close를 같이 처리. 닫는 작업을 없앰.
 ```
 
 
